@@ -1,10 +1,13 @@
+import { useFilters } from '../contexts/filter.context';
 import Tag from './tag';
 
 interface Props {
-  job: any;
+  job: Job;
 }
 
 export default function JobCard({ job }: Props) {
+  const { setFilters } = useFilters();
+
   return (
     <div
       className={`p-6 pt-0 space-y-4 bg-white shadow-lg mt-6 rounded-md ${
@@ -44,13 +47,24 @@ export default function JobCard({ job }: Props) {
       <div className="w-full h-px bg-[#b7c4c4]" />
 
       <div className="flex gap-4 flex-wrap">
-        <Tag>{job.role}</Tag>
-        <Tag>{job.level}</Tag>
-        {job.languages.map((language) => (
-          <Tag key={language}>{language}</Tag>
+        <Tag onClick={() => setFilters((prev) => [...prev, job.role])}>
+          {job.role}
+        </Tag>
+        <Tag onClick={() => setFilters((prev) => [...prev, job.level])}>
+          {job.level}
+        </Tag>
+        {job.languages?.map((language) => (
+          <Tag
+            key={language}
+            onClick={() => setFilters((prev) => [...prev, language])}
+          >
+            {language}
+          </Tag>
         ))}
         {job.tools?.map((tool) => (
-          <Tag key={tool}>{tool}</Tag>
+          <Tag key={tool} onClick={() => setFilters((prev) => [...prev, tool])}>
+            {tool}
+          </Tag>
         ))}
       </div>
     </div>
