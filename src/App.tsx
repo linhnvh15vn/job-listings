@@ -1,35 +1,37 @@
 import Header from './components/header';
 import JobCard from './components/job-card';
-import Tag from './components/tag';
-import { useFilters } from './contexts/filter.context';
+import SearchBox from './components/search-box';
 import data from './data.json';
+import { useSearch } from './hooks/use-search';
 
 export default function App() {
-  const { filters, handleRemoveTag } = useFilters();
+  const { keywords } = useSearch();
 
   return (
     <>
       <Header />
-      {!!filters.length && (
-        <div className="bg-white p-5 flex items-center">
-          <div className="flex gap-4 flex-wrap">
-            {filters.map((filter) => (
-              <Tag
-                key={filter}
-                allowedRemove
-                onRemove={() => handleRemoveTag(filter)}
-              >
-                {filter}
-              </Tag>
-            ))}
-          </div>
-          <button className="ml-auto">Clear</button>
-        </div>
-      )}
+      <SearchBox />
       <div className="container grid grid-cols-1 gap-y-4">
-        {data.map((data) => (
-          <JobCard key={data.id} job={data} />
-        ))}
+        {data
+          .filter((data) => {
+            const jobKeywords = [
+              data.role,
+              data.level,
+              ...data.languages,
+              ...data.tools,
+            ];
+
+            if (keywords.length === 0) {
+              return data;
+            }
+
+            return keywords.every(
+              (keyword) => jobKeywords.includes(keyword) && data,
+            );
+          })
+          .map((data) => (
+            <JobCard key={data.id} job={data} />
+          ))}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useFilters } from '../contexts/filter.context';
+import { useSearch } from '../hooks/use-search';
 import Tag from './tag';
 
 interface Props {
@@ -6,7 +6,8 @@ interface Props {
 }
 
 export default function JobCard({ job }: Props) {
-  const { setFilters } = useFilters();
+  const { setKeywords } = useSearch();
+  const jobKeywords = [job.role, job.level, ...job.languages, ...job.tools];
 
   return (
     <div
@@ -43,27 +44,14 @@ export default function JobCard({ job }: Props) {
           {job.postedAt} - {job.contract} - {job.location}
         </p>
       </div>
-
       <div className="w-full h-px bg-[#b7c4c4]" />
-
       <div className="flex gap-4 flex-wrap">
-        <Tag onClick={() => setFilters((prev) => [...prev, job.role])}>
-          {job.role}
-        </Tag>
-        <Tag onClick={() => setFilters((prev) => [...prev, job.level])}>
-          {job.level}
-        </Tag>
-        {job.languages?.map((language) => (
+        {jobKeywords.map((jobKw) => (
           <Tag
-            key={language}
-            onClick={() => setFilters((prev) => [...prev, language])}
+            key={jobKw}
+            onClick={() => setKeywords((prev) => [...prev, jobKw])}
           >
-            {language}
-          </Tag>
-        ))}
-        {job.tools?.map((tool) => (
-          <Tag key={tool} onClick={() => setFilters((prev) => [...prev, tool])}>
-            {tool}
+            {jobKw}
           </Tag>
         ))}
       </div>

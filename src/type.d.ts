@@ -10,6 +10,6 @@ type Job = {
   postedAt: string;
   contract: string;
   location: string;
-  languages?: string[];
-  tools?: string[];
+  languages: string[];
+  tools: string[];
 };
