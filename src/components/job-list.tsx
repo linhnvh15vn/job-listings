@@ -1,4 +1,4 @@
-import JobCard from './job-card';
+import JobCard from "./job-card";
 
 interface Props {
   jobs: Job[];

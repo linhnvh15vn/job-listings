@@ -1,13 +1,13 @@
-import Tag from './tag';
-import { useSearch } from '../hooks/use-search';
+import Tag from "./tag";
+import { useSearch } from "../hooks/use-search";
 
 export default function SearchBox() {
   const { keywords, removeKeyword, reset } = useSearch();
 
   return (
     !!keywords.length && (
-      <div className="bg-white p-5 flex items-center rounded-md shadow-lg">
-        <div className="flex gap-4 flex-wrap">
+      <div className="flex items-center rounded-md bg-white p-5 shadow-lg">
+        <div className="flex flex-wrap gap-4">
           {keywords.map((keyword) => (
             <Tag
               key={keyword}

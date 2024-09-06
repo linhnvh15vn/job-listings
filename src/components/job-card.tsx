@@ -1,5 +1,5 @@
-import { useSearch } from '../hooks/use-search';
-import Tag from './tag';
+import { useSearch } from "../hooks/use-search";
+import Tag from "./tag";
 
 interface Props {
   job: Job;
@@ -11,15 +11,15 @@ export default function JobCard({ job }: Props) {
 
   return (
     <div
-      className={`p-6 pt-0 bg-white shadow-lg mt-6 rounded-md md:flex items-center gap-6 ${
-        job.featured && 'border-l-4 border-primary'
+      className={`mt-6 items-center gap-6 rounded-md bg-white p-6 pt-0 shadow-lg md:flex ${
+        job.featured && "border-l-4 border-primary"
       }`}
     >
-      <div className="pt-8 relative">
+      <div className="relative pt-8">
         <img
           src={job.logo}
           alt={job.company}
-          className="size-12 absolute -top-1/2 md:size-20 md:relative"
+          className="absolute -top-1/2 size-12 md:relative md:size-20"
         />
       </div>
 
@@ -32,14 +32,14 @@ export default function JobCard({ job }: Props) {
           </div>
         </div>
         <h1>{job.position}</h1>
-        <p className="font-medium text-base md:text-lg text-[#7c8f8f]">
+        <p className="text-base font-medium text-[#7c8f8f] md:text-lg">
           {job.postedAt} - {job.contract} - {job.location}
         </p>
       </div>
 
-      <div className="w-full h-px bg-[#b7c4c4] md:hidden my-4" />
+      <div className="my-4 h-px w-full bg-[#b7c4c4] md:hidden" />
 
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex flex-wrap gap-4">
         {jobKeywords.map((jobKw) => (
           <Tag
             key={jobKw}

@@ -1,8 +1,8 @@
-import Header from './components/header';
-import JobList from './components/job-list';
-import SearchBox from './components/search-box';
-import data from './data.json';
-import { useSearch } from './hooks/use-search';
+import Header from "./components/header";
+import JobList from "./components/job-list";
+import SearchBox from "./components/search-box";
+import data from "./data.json";
+import { useSearch } from "./hooks/use-search";
 
 export default function App() {
   const { keywords } = useSearch();
