@@ -29,3 +29,7 @@
     @apply text-sm md:text-lg;
   }
 }
+
+body {
+  font-family: 'League Spartan', sans-serif;
+}
