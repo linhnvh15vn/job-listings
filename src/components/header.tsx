@@ -1,9 +1,7 @@
 export default function Header() {
   return (
     <header>
-      <div className="h-[156px] bg-[#5CA5A5]">
-        <img src="/images/bg-header-mobile.svg" />
-      </div>
+      <div className="h-40 bg-[#5CA5A5] bg-header-mobile md:bg-header-desktop bg-cover" />
     </header>
   );
 }

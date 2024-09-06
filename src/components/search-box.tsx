@@ -6,7 +6,7 @@ export default function SearchBox() {
 
   return (
     !!keywords.length && (
-      <div className="bg-white p-5 flex items-center">
+      <div className="bg-white p-5 flex items-center rounded-md shadow-lg">
         <div className="flex gap-4 flex-wrap">
           {keywords.map((keyword) => (
             <Tag

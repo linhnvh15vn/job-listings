@@ -7,6 +7,11 @@ export default {
         center: true,
         padding: '1.5rem',
       },
+
+      backgroundImage: {
+        'header-mobile': "url('/images/bg-header-mobile.svg')",
+        'header-desktop': "url('/images/bg-header-desktop.svg')",
+      },
     },
   },
   plugins: [],

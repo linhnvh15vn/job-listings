@@ -1,5 +1,5 @@
 import Header from './components/header';
-import JobCard from './components/job-card';
+import JobList from './components/job-list';
 import SearchBox from './components/search-box';
 import data from './data.json';
 import { useSearch } from './hooks/use-search';
@@ -7,31 +7,21 @@ import { useSearch } from './hooks/use-search';
 export default function App() {
   const { keywords } = useSearch();
 
+  const renderedJobs = data.filter((job) => {
+    const jobKeywords = [job.role, job.level, ...job.languages, ...job.tools];
+
+    return (
+      keywords.length === 0 ||
+      keywords.every((keyword) => jobKeywords.includes(keyword))
+    );
+  });
+
   return (
     <>
       <Header />
-      <SearchBox />
-      <div className="container grid grid-cols-1 gap-y-4">
-        {data
-          .filter((data) => {
-            const jobKeywords = [
-              data.role,
-              data.level,
-              ...data.languages,
-              ...data.tools,
-            ];
-
-            if (keywords.length === 0) {
-              return data;
-            }
-
-            return keywords.every(
-              (keyword) => jobKeywords.includes(keyword) && data,
-            );
-          })
-          .map((data) => (
-            <JobCard key={data.id} job={data} />
-          ))}
+      <div className="container">
+        <SearchBox />
+        <JobList jobs={renderedJobs} />
       </div>
     </>
   );
