@@ -11,7 +11,7 @@ export default function JobCard({ job }: Props) {
 
   return (
     <div
-      className={`p-6 pt-0 space-y-4 bg-white shadow-lg mt-6 rounded-md md:flex items-center gap-6 ${
+      className={`p-6 pt-0 bg-white shadow-lg mt-6 rounded-md md:flex items-center gap-6 ${
         job.featured && 'border-l-4 border-primary'
       }`}
     >
@@ -23,20 +23,12 @@ export default function JobCard({ job }: Props) {
         />
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 space-y-2">
         <div className="flex items-center gap-8">
           <h2 className="text-primary">{job.company}</h2>
           <div className="flex gap-2">
-            {job.new && (
-              <div className="h-6 px-2 rounded-xl bg-primary text-white font-bold text-sm flex items-center">
-                NEW!
-              </div>
-            )}
-            {job.featured && (
-              <div className="h-6 px-2 rounded-xl bg-[#2b3939] text-white font-bold text-sm flex items-center">
-                FEATURED
-              </div>
-            )}
+            {job.new && <Tag variant="primary">NEW!</Tag>}
+            {job.featured && <Tag variant="accent">FEATURE</Tag>}
           </div>
         </div>
         <h1>{job.position}</h1>
@@ -44,7 +36,9 @@ export default function JobCard({ job }: Props) {
           {job.postedAt} - {job.contract} - {job.location}
         </p>
       </div>
-      <div className="w-full h-px bg-[#b7c4c4] md:hidden" />
+
+      <div className="w-full h-px bg-[#b7c4c4] md:hidden my-4" />
+
       <div className="flex gap-4 flex-wrap">
         {jobKeywords.map((jobKw) => (
           <Tag
