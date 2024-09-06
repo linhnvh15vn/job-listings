@@ -3,7 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 180 52% 96%;
+    --primary: 180 29% 50%;
+  }
+}
+
+@layer base {
   body {
-    @apply bg-[#effafa];
+    @apply bg-background;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-base md:text-xl;
+  }
+
+  h2 {
+    @apply text-sm md:text-lg;
   }
 }

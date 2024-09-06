@@ -7,7 +7,10 @@ export default {
         center: true,
         padding: '1.5rem',
       },
-
+      colors: {
+        background: 'hsl(var(--background))',
+        primary: 'hsl(var(--primary))',
+      },
       backgroundImage: {
         'header-mobile': "url('/images/bg-header-mobile.svg')",
         'header-desktop': "url('/images/bg-header-desktop.svg')",

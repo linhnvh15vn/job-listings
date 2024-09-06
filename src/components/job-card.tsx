@@ -11,24 +11,24 @@ export default function JobCard({ job }: Props) {
 
   return (
     <div
-      className={`p-6 pt-0 space-y-4 bg-white shadow-lg mt-6 rounded-md ${
-        job.featured && 'border-l-[5px] border-[#5ca5a5]'
+      className={`p-6 pt-0 space-y-4 bg-white shadow-lg mt-6 rounded-md md:flex items-center gap-6 ${
+        job.featured && 'border-l-4 border-primary'
       }`}
     >
       <div className="pt-8 relative">
         <img
           src={job.logo}
           alt={job.company}
-          className="size-12 absolute -top-1/2"
+          className="size-12 absolute -top-1/2 md:size-20 md:relative"
         />
       </div>
 
-      <div>
+      <div className="flex-1">
         <div className="flex items-center gap-8">
-          <h3 className="text-sm font-bold text-[#5ca5a5]">{job.company}</h3>
+          <h2 className="text-primary">{job.company}</h2>
           <div className="flex gap-2">
             {job.new && (
-              <div className="h-6 px-2 rounded-xl bg-[#5ca5a5] text-white font-bold text-sm flex items-center">
+              <div className="h-6 px-2 rounded-xl bg-primary text-white font-bold text-sm flex items-center">
                 NEW!
               </div>
             )}
@@ -39,12 +39,12 @@ export default function JobCard({ job }: Props) {
             )}
           </div>
         </div>
-        <h1 className="font-bold text-[#2b3939]">{job.position}</h1>
-        <p className="font-medium text-[#7c8f8f]">
+        <h1>{job.position}</h1>
+        <p className="font-medium text-base md:text-lg text-[#7c8f8f]">
           {job.postedAt} - {job.contract} - {job.location}
         </p>
       </div>
-      <div className="w-full h-px bg-[#b7c4c4]" />
+      <div className="w-full h-px bg-[#b7c4c4] md:hidden" />
       <div className="flex gap-4 flex-wrap">
         {jobKeywords.map((jobKw) => (
           <Tag
