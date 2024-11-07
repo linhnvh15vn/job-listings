@@ -6,24 +6,30 @@ interface Props {
 }
 
 export default function JobCard({ job }: Props) {
-  const { setKeywords } = useSearch();
+  const { keywords, setKeywords } = useSearch();
   const jobKeywords = [job.role, job.level, ...job.languages, ...job.tools];
+
+  const handleClickTag = (jobKw: string) => {
+    if (!keywords.includes(jobKw)) {
+      setKeywords((prev) => [...prev, jobKw]);
+    }
+
+    return;
+  };
 
   return (
     <div
-      className={`mt-6 items-center gap-6 rounded-md bg-white p-6 pt-0 shadow-lg md:flex ${
+      className={`relative mt-6 items-center gap-6 rounded-md bg-white p-6 pt-8 shadow-lg md:mt-0 md:flex md:px-10 md:py-8 ${
         job.featured && "border-l-4 border-primary"
       }`}
     >
-      <div className="relative pt-8">
-        <img
-          src={job.logo}
-          alt={job.company}
-          className="absolute -top-1/2 size-12 md:relative md:size-20"
-        />
-      </div>
+      <img
+        src={job.logo}
+        alt={job.company}
+        className="absolute -top-6 inline-block size-12 md:relative md:top-0 md:size-20"
+      />
 
-      <div className="flex-1 space-y-2">
+      <div className="space-y-2 md:flex-1">
         <div className="flex items-center gap-8">
           <h2 className="text-primary">{job.company}</h2>
           <div className="flex gap-2">
@@ -33,7 +39,7 @@ export default function JobCard({ job }: Props) {
         </div>
         <h1>{job.position}</h1>
         <p className="text-base font-medium text-[#7c8f8f] md:text-lg">
-          {job.postedAt} - {job.contract} - {job.location}
+          {job.postedAt} &bull; {job.contract} &bull; {job.location}
         </p>
       </div>
 
@@ -41,10 +47,7 @@ export default function JobCard({ job }: Props) {
 
       <div className="flex flex-wrap gap-4">
         {jobKeywords.map((jobKw) => (
-          <Tag
-            key={jobKw}
-            onClick={() => setKeywords((prev) => [...prev, jobKw])}
-          >
+          <Tag key={jobKw} onClick={() => handleClickTag(jobKw)}>
             {jobKw}
           </Tag>
         ))}

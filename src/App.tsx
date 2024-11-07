@@ -19,7 +19,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="container max-w-6xl space-y-10 py-8 md:pt-0">
         <SearchBox />
         <JobList jobs={renderedJobs} />
       </div>
