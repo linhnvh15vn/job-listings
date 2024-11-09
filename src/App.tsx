@@ -1,8 +1,8 @@
-import Header from "./components/header";
-import JobList from "./components/job-list";
-import SearchBox from "./components/search-box";
-import data from "./data.json";
-import { useSearch } from "./hooks/use-search";
+import Header from './components/header';
+import JobList from './components/job-list';
+import SearchBox from './components/search-box';
+import data from './data.json';
+import { useSearch } from './hooks/use-search';
 
 export default function App() {
   const { keywords } = useSearch();
@@ -19,8 +19,12 @@ export default function App() {
   return (
     <>
       <Header />
-      <div className="container max-w-6xl space-y-10 py-8 md:pt-0">
-        <SearchBox />
+      <div
+        className={`container max-w-6xl py-8 ${keywords.length ? 'pt-0' : ''}`}
+      >
+        <div className="relative bottom-9">
+          <SearchBox />
+        </div>
         <JobList jobs={renderedJobs} />
       </div>
     </>

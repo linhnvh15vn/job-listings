@@ -1,12 +1,12 @@
-import Tag from "./tag";
-import { useSearch } from "../hooks/use-search";
+import Tag from './tag';
+import { useSearch } from '../hooks/use-search';
 
 export default function SearchBox() {
   const { keywords, removeKeyword, reset } = useSearch();
 
   return (
     !!keywords.length && (
-      <div className="mb-8 flex items-center rounded-md bg-white p-5 shadow-lg md:-mt-9">
+      <div className="flex items-center rounded-md bg-white p-5 shadow-lg">
         <div className="flex flex-wrap gap-4">
           {keywords.map((keyword) => (
             <Tag
@@ -18,7 +18,10 @@ export default function SearchBox() {
             </Tag>
           ))}
         </div>
-        <button className="ml-auto" onClick={reset}>
+        <button
+          className="ml-auto font-bold text-mute-foreground hover:text-primary"
+          onClick={reset}
+        >
           Clear
         </button>
       </div>
