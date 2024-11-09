@@ -9,7 +9,12 @@ export default {
       },
       colors: {
         background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: 'hsl(var(--primary))',
+        mute: {
+          foreground: 'hsl(var(--mute-foreground))',
+        },
+        border: 'hsl(var(--border))',
       },
       backgroundImage: {
         'header-mobile': "url('/images/bg-header-mobile.svg')",

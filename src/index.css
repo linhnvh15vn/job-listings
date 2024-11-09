@@ -5,7 +5,12 @@
 @layer base {
   :root {
     --background: 180 52% 96%;
+    --foreground: 180 14% 20%;
+
     --primary: 180 29% 50%;
+    --mute-foreground: 180 8% 52%;
+
+    --border: 180 10% 74%;
   }
 }
 
@@ -13,25 +18,10 @@
   body {
     @apply bg-background;
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-bold;
-  }
-
-  h1 {
-    @apply text-base md:text-xl;
-  }
-
-  h2 {
-    @apply text-sm md:text-lg;
-  }
 }
 
 body {
-  font-family: "League Spartan", sans-serif;
+  font-family: 'League Spartan', sans-serif;
 }
 
 ::-webkit-scrollbar {
